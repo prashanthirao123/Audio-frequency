@@ -1,0 +1,16 @@
+Background: The C chord recording is stored in a file named Cchord.mat.
+This file containstwo variables
+y:signal from recording
+fs:sampling frequency
+% Load the file Cchord.mat by creating a variable named n that contains the number of elements in y.Then use n to create an evenly-spaced vector t that starts at 0, ends at n-1 and has elements that are spaced by 1
+load Cchord.mat
+n=numel(y)
+t=0:n-1
+% t now has the correct number of points, but it needs to represent the times when the audio signal was sampled.The sampling frequency fs can be used to convert the vector to time in seconds.
+% Divide t by fs.Assign the output to the same variable t.Then plot y against t.
+t=t/fs
+plot(t,y)
+In the plot, we notice that y is periodic, but its not a simple sine wave.Its made up of multiple sine waves with different frequencies.A Fourier transform will return information about the frequency content of the signal.The location of the dominanat frequencies will show what notes are contained in the chord.
+One can use fft function to compute the discrete fourier transform of a vector 
+fft(y)
+% create a variable named yfft that contains 
