@@ -13,4 +13,13 @@ plot(t,y)
 In the plot, we notice that y is periodic, but its not a simple sine wave.Its made up of multiple sine waves with different frequencies.A Fourier transform will return information about the frequency content of the signal.The location of the dominanat frequencies will show what notes are contained in the chord.
 One can use fft function to compute the discrete fourier transform of a vector 
 fft(y)
-% create a variable named yfft that contains 
+% create a variable named yfft that contains the absolute value of the discrete Fourier transform of y
+yfft=abs(fft(y))
+% We have calculated the time vector t for the signal y.Similarly, we need to calculate the frequency vector f for FFT vector yfft
+f=0:n-1
+% The vector f now contains n points. To convert these points to frequencies, you can multiply the entire vector by the sampling frequency(fs) and divide it by the number of points(n).
+% f will contain frequencies from 0 to fs.The dominant frequencies are loacted at the beginning of f.So use the xlim function to zoom in on the area of interest
+xlim([xmin xmax])
+% Multiply f with fs/n and assign the output to the same variable f.And plot yfft against f using the x-limits 0 to 1000.
+
+
